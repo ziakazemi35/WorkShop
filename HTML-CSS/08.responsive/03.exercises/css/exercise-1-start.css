@@ -1,0 +1,117 @@
+/* VARIANTE BOOTSTRAP
+ * Points de ruptures:
+ * 576px -> 768px -> 992px -> 1200px
+--------------------------------------------*/
+
+
+
+/* By Deafault < 576px
+--------------------------------------------*/
+@media (min-width: 576px) {
+body {
+  background-color: #222;
+  font-size: 1.2em;
+  color: #212121;
+}
+h1 {
+  font-size: 1.2em;
+  color: #212121;
+  background-color: #fff;
+}
+h1::after{
+  content: ":PHONES";
+}
+/* background du body: #222; */
+/* font-size du h1: 1.2em */
+/* couleur du h1: #212121; */
+/* background du h1: #fff; */
+
+
+
+/* FOR "PHONES"
+ * @media (min-width: 576px)
+--------------------------------------------*/
+@media (min-width: 576px) {
+  body {
+    background-color: #555;
+  }
+  h1 {
+    font-size: 1.6em;
+    color: #212121;
+    background-color: #e5e5e5;
+  }
+}
+h1::after{
+  content: ":TABLETS";
+}
+/* background du body: #555; */
+/* font-size du h1: 1.6em */
+/* background du h1: #e5e5e5; */
+
+
+
+/* POUR "TABLETTES" orientation PORTRAIT
+ * @media (min-width: 768px)
+--------------------------------------------*/
+@media (min-width: 786px) {
+body {
+  background-color: #800;
+}
+h1 {
+  font-size: 1.2em;
+  color: #212121;
+  background-color: #e5e5e5;
+}
+}
+h1::after{
+  content: ":SMALL DESKTOPS";
+}
+/* background du body: #555; */
+/* font-size du h1: 1.6em */
+/* background du h1: #e5e5e5; */
+
+
+
+/* POUR "TABLETTES" orientation PAYSAGE
+ * et écrans petite résolution
+ * @media (min-width: 992px)
+--------------------------------------------*/
+@media (min-width: 992px) {
+  body {
+    background-color: #800;
+  }
+  h1 {
+    font-size: 1.2em;
+    color: #212121;
+    background-color: #e5e5e5;
+  }
+  }
+  h1::after{
+    content: ":SMALL DESKTOPS";
+  }
+/* background du body: #777; */
+/* font-size du h1: 2em */
+/* couleur du h1: #fff; */
+/* background du h1: #aaa; */
+
+
+
+/* POUR ORDINATEURS AFFICHAGE HD
+ * @media (min-width: 1200px)
+--------------------------------------------*/
+@media (min-width: 1200px) {body {
+  background-color: #800;
+}
+h1 {
+  font-size: 3em;
+  color: #e5e5e5;
+  background-color: #e5e5e5;
+}
+}
+h1::after{
+  content: ":SMALL DESKTOPS";
+}
+/* background du body: #e5e5e5; */
+/* font-size du h1: 3em */
+/* couleur du h1: #e5e5e5; */
+/* background du h1: #333; */

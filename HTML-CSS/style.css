@@ -1,0 +1,119 @@
+/*	1. RESET BROWSER STYLES
+-------------------------------------------------------------------------- */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+/* Make box-sizing "border-box" as default */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*	2. MAIN TAGS
+-------------------------------------------------------------------------- */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em; 
+  font-weight: 300;
+  line-height: 1.5em;
+  /*
+  letter-spacing: 0.1em;
+  word-spacing: 0.01em;
+  */
+  background-color: burlywood;
+}
+/*HEADERS*/
+h1, h2 , h3 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: .5em; /*real margin inn px*/
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin-bottom: .3em; /*real margin inn px*/
+}
+
+/*LINKS*/
+a {
+  text-decoration: none;
+  color: #178EF5;
+  outline: none;
+  transition: transform 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+a:hover{
+  color: red;
+  background-color: blueviolet;
+  text-decoration: underline dotted;
+}
+/*PARAGRAPH*/
+
+p {
+  margin-bottom: 1em;
+}
+
+
+strong {
+  font-weight: 500;
+}
+
+em {
+  font-style: italic;
+}
+
+
+/*	3.HELPER CLASSES (REUSABLE STYLES)
+--------------------------------------------------------------------------*/
+/*MARGINS*/
+.MB1 {
+  margin-bottom: 1rem;
+}
+.MB1p5 {
+  margin-bottom: 1.5rem;
+}
+.MB2 {
+  margin-bottom: 2rem;
+}
+.MT2 {
+  margin-top: 2rem;
+}
+.MY2 {
+  margin: 2rem 0;
+}
+/*PADDINGS*/
+.PB1 {
+  padding-bottom: 1rem;
+}
+.PB1p5 {
+  padding-bottom: 1.5rem;
+}
+.PB2 {
+  padding-bottom: 2rem;
+}
+
+/*BGs*/
+.bg-grey {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+
+
+/*	4. LAYOUT
+--------------------------------------------------------------------------*/
+/*Custom Styles depending on your Project*/
+
+
+/*	5. MEDIA QUERIES
+--------------------------------------------------------------------------*/
