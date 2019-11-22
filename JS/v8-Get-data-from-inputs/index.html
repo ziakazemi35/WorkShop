@@ -8,32 +8,31 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
-  <p><button id="btnDisplayTodos">Display Todos</button></p>
-  <p><button id="btnToggleAll">Toggle All</button></p>
+
+  <p><button id="btnDisplay" onclick="todos.displayTodos()">Display Todos</button></p>
+  <p><button id="btnToggleAll" onclick="todos.toggleAll()">Toggle all</button></p>
 
   <p class="row">
-  <input id="InputAdd" type="text" placeholder=""> 
-  <button id="btnName">Name</button> 
+    <input id="inputAdd" type="text" placeholder="Todo Text">
+    <button id="btnAdd" onclick="handlers.addTodo()">Add Todo</button>
   </p>
 
   <p class="row">
-      <input id="InputChangeIndex" class="index" type="number" min="0" placeholder="">
-      <input id="InputChangeIndex" type="text" placeholder="">  
-      <button id="btnChangeName">Change Name</button> 
+    <input id="inputChangeIndex" class="index" type="number" min="0" placeholder="Index">
+    <input id="inputChangeText" type="text" placeholder="Todo Text">
+    <button id="btnChange" onclick="handlers.changeTodo()">Change Todo</button>
   </p>
 
   <p class="row">
-      <input id="InputToggleIndex" class="index" type="number" min="0" placeholder=""> 
-      <button id="btnToggle">Toggle Todo</button> 
+    <input id="inputToggleIndex" class="index" type="number" min="0" placeholder="Index">
+    <button id="btnToggle" onclick="handlers.toggleTodo()">Toggle Todo</button>
   </p>
 
   <p class="row">
-      <input id="InputDeleteIndex" class="index" type="number" min="0" placeholder=""> 
-      <button id="btnDelete">Delete Todo</button> 
+    <input id="inputDeleteIndex" class="index" type="number" min="0" placeholder="Index">
+    <button id="btnDelete" onclick="handlers.deleteTodo()">Delete Todo</button>
   </p>
 
-  <!-- <script src="app.js"></script> -->
-  <script src="scripts.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

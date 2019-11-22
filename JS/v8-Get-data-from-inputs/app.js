@@ -1,116 +1,104 @@
-//START TODOS OBJECT
+/* TODOS OBJECT
+ * Specialty: manipulate the todos array
+-----------------------------------------------*/
 let todos = {
-  list: [
+
+  //MY TODO LIST - PROPERTY
+  list : [
+
     {
-      text: "learn HTML",
+      text: "Learn HTML5",
       completed: true
     },
     {
-      text: "learn CSS",
+      text: "Learn CSS",
       completed: true
     },
     {
-      text: "learn JS",
-      completed: true
+      text: "Learn JS",
+      completed: false
     },
     {
-      text: "learn PHP",
-      completed: true
+      text: "Learn PHP",
+      completed: false
     }
-  
-  
+
   ],
 
-    displayTodos: function () {
+  //DISPLAY TODOS - METHOD
+  displayTodos: function() {
 
-    if (this.list.length == 0) {
-      console.log("inside the conditon");
-      console.log("I am the hero man come on man trust me");
-
+    if(this.list.length == 0) {
+      console.log("You don't have any todos, add some!");
     }
 
-
-    this.list.forEach(function (item) {
-      let completedStr = (item.completed) ? "(X)" : "( )";
+    this.list.forEach(function(item) {
+      let completedStr = (item.completed) ? "(x)" : "( )";
       console.log(completedStr, item.text);
     });
-console.log("_____________________________________");
-
+    console.log("-------------");
   },
-  addTodo: function (todoText) {
+
+  //ADD TODO
+  addTodo: function(todoText) {
+
     let newTodo = {
       text: todoText,
       completed: false
     }
 
-    this.list.push(todoText);
+    this.list.push(newTodo);
     this.displayTodos();
   },
 
-
-  changeTodo: function (index, newText) {
-
-    this.list[index] = newText;
+  //CHANGE TODO
+  changeTodo: function(index, newText) {
+    this.list[index].text = newText;
     this.displayTodos();
   },
 
-
-
-  deleteTodo: function (index, item) {
+  //DELETE TODO
+  deleteTodo: function(index) {
     this.list.splice(index, 1);
     this.displayTodos();
   },
 
-
-  //toggle completed
-  toggleTodo: function (index) {
-    let currentStatus = this.list[1].completed; //true or false
-
-    this.list[index].completed = !currentStatus;
-
+  //TOGGLE COMPLETED
+  toggleTodo: function(index) {
+  
+    let currentStatus = this.list[index].completed; //true or false
+    this.list[index].completed = ! currentStatus;
     this.displayTodos();
-  },
-  //TOGGLE ALL
 
-  toggleAll: function () {
+  },
+
+  //TOGGLE ALL !
+  toggleAll: function() {
 
     //Completed items INIT
     let completedItems = 0;
-    let totalTodos = this.list.length;
+    
+    //How many todos I have ?
+    let totalTodos = this.list.length; //console.log("Total todos:", totalTodos);
 
-    // console.log("Total", totalTodos);
     //1. Check what items are completed (true)
-    this.list.forEach(function (item) {
-      if (item.completed == true) {
-        completedItems++;
-
+    this.list.forEach(function(item) {
+      if(item.completed) {
+        completedItems++; //or... completedItems += 1;
       }
     });
-    // console.log("Completed Items:", completedItems);
-    //2. IF NOTHING IS COMPLETED => CHECK THEM ALL
-    //OR IF WE HAVE A COMMPLETED ITEMS => CHECK THEM ALL
-    //VERSION1
-    // if(completedItems == 0  ||  (completedItems > 0 && completedItems != totalTodos)){
-    //   console.log("check them all");
-    // }
-    //VERSION 2
-    //   if (completedItems >=0 &&completedItems != totalTodos){
-    //     if(completedItems != totalTodos){
-    //       console.log("check them all");
+    //console.log("Completed items:", completedItems);
 
-    //     }
-    //   }
-    // else {
-    //   console.log("Uncheck them all");
-    //VERSION 3
-    if (completedItems == totalTodos) {
-      this.list.forEach(function (item) {
-        item.completed = false
+    //IF everything is completed => uncheck them all 
+    if(completedItems == totalTodos) {
+      this.list.forEach(function(item) {
+        item.completed = false;
       });
     }
+    //ELSE check them all
     else {
-      this.list.forEach(function (item) {
-        item.completed = true
+      this.list.forEach(function(item) {
+        item.completed = true;
       });
     }
 
@@ -118,31 +106,157 @@ console.log("_____________________________________");
 
   }
 
-}
+}; // END OBJECT todos
+
+
+/* HANDLERS OBJECT
+ * Specialty: communicate with HTML, grab
+ * the input values and send them to todos obj.
+-----------------------------------------------*/
+let handlers = {
+
+  //Check if an input is empty. Alert if so
+  isEmpty: function(input) {
+
+    if(input.value === '') {
+      alert("The input ''" + input.id + "'' cannot be empty!");
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  },
+
+  //Handler for ADD todo
+  addTodo: function() {
+    const inputAdd = document.getElementById('inputAdd');
+
+    if(! this.isEmpty(inputAdd)) {
+      todos.addTodo(inputAdd.value);
+      inputAdd.value = '';
+    }
+
+
+  },
+
+  //Handler for CHANGE todo
+  changeTodo: function() {
+    const inputChangeIndex = document.getElementById('inputChangeIndex');
+    const inputChangeText = document.getElementById('inputChangeText');
+
+    if(! this.isEmpty (inputChangeIndex) &&  ! this.isEmpty (inputChangeText.value )) {
+      todos.changeTodo(inputChangeIndex.value, inputChangeText.value);
+      inputChangeIndex.value = inputChangeText.value = '';
+    }
+  },
+
+  //Handler for DELETE todo
+  deleteTodo: function() {
+    const inputDeleteIndex = document.getElementById('inputDeleteIndex');
+
+    if(! this.isEmpty(inputDeleteIndex)) {
+      todos.deleteTodo(inputDeleteIndex.value);
+      inputDeleteIndex.value = '';
+    }
+  },
+
+  //Handler for TOGGLE todo
+  toggleTodo: function() {
+    const inputToggleIndex = document.getElementById('inputToggleIndex');
+
+    if(! this.isEmpty(inputToggleIndex)) {
+      todos.toggleTodo(inputToggleIndex.value);
+      inputToggleIndex.value = '';
+    }
+  }
+
+};
+
+
+
+//LINK YOUR HTML buttons
+// const btnDisplay = document.getElementById('btnDisplay');
+// const btnToggleAll = document.getElementById('btnToggleAll');
+
+//Display todos btn
+// btnDisplay.addEventListener('click', function() {
+//   todos.displayTodos();
+// });
+
+//Toggle todos btn
+// btnToggleAll.addEventListener('click', function() {
+//   todos.toggleAll();
+// });
+
+//ADD Todo btn and input
+// const btnAdd = document.getElementById('btnAdd');
+
+// btnAdd.addEventListener('click', function() {
+
+//   const inputAdd = document.getElementById('inputAdd');
+
+//   if(inputAdd.value !== '') {
+//     todos.addTodo(inputAdd.value);
+//     inputAdd.value = '';
+//   }
+//   else {
+//     alert("The input text cannot be empty!");
+//   }
+
+// });
+
+//TOGGLE Todo btn and input
+// const btnToggle = document.getElementById('btnToggle');
+
+// btnToggle.addEventListener('click', function() {
+
+//   const inputToggleIndex = document.getElementById('inputToggleIndex');
+
+//   if(inputToggleIndex.value !== '') {
+//     todos.toggleTodo(inputToggleIndex.value);
+//     inputToggleIndex.value = '';
+//   }
+//   else {
+//     alert("The index cannot be empty!");
+//   }
+
+// });
 
 
 
 
-
-    //END OBJECT todos
-
-    // todos.displayTodos();
-    todos.displayTodos();
-    todos.toggleAll();
+// todos.addTodo("asdasd");
 
 
-    //LINK YOUR HTML BUTTONS 
-const btnDisplayTodos = document.getElementById('btnDisplayTodos');
-const btnToggleAll = document.getElementById('btnToggleAll');
 
-btnDisplayTodos.addEventListener('click', function(){
-  console.log("HOW MANY TIMES YOU ARE CLICKING");
-  todos.displayTodos();  
-});
-
-btnToggleAll.addEventListener('click', function(){
-  console.log("DONT CLICK TO MUCH");
-  todos.toggleAll();
-});
 
 //IN jQuery is something like this:
+// $("#btnDisplay").on('click', function() {
+//   todos.displayTodos();
+// })
+
+//WHAT WE'VE MISSED :
+//1. STRICT COMPARISON
+/*
+let num = "3";
+if(num === 3) {
+  console.log("TRUE");
+}
+else {
+  console.log("FALSE");
+}
+
+let bool = 1;
+if(bool === true) {
+  console.log("TRUE");
+}
+else {
+  console.log("FALSE");
+}
+
+//2. You can write conditions like this :
+if(true) console.log("TRUE");
+else console.log("FALSE");
+*/
+
